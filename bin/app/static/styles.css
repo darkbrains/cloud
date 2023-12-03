@@ -153,3 +153,40 @@ h1{
 #theme-toggle.light .sun {
     transform: rotate(-20deg);
 }
+
+
+.success-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.error-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
