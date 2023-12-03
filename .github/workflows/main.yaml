@@ -75,12 +75,12 @@ jobs:
           ref: main
           token: ${{ secrets.TOKEN_GITHUB }}
 
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.GPG_KEY }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+      # - name: Import GPG key
+      #   uses: crazy-max/ghaction-import-gpg@v6
+      #   with:
+      #     gpg_private_key: ${{ secrets.GPG_KEY }}
+      #     git_user_signingkey: true
+      #     git_commit_gpgsign: true
 
       - name: Delever to K8S
         run: |
@@ -92,7 +92,6 @@ jobs:
           git add .
           git config --local user.email "blackdocscloud@gmail.com"
           git config --local user.name "darkbrains-bot"
-          git config --global user.signingkey 57BF8C9B85B26BA2
           git commit -m "Update image tag for cloud"
           git push
 
