@@ -92,6 +92,7 @@ jobs:
           git add .
           git config --local user.email "blackdocscloud@gmail.com"
           git config --local user.name "darkbrains-bot"
+          git config --global user.signingkey F42530A145BC2461
           git commit -m "Update image tag for cloud"
           git push
 
