@@ -30,11 +30,23 @@ DATABASE_PORT = os.environ['MYSQL_PORT']
 EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']
 EMAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
+
 os.environ['PROMETHEUS_MULTIPROC_DIR'] = '/tmp/prometheus_multiproc_dir'
 
+
 app = FastAPI()
+
+
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    if exc.status_code == 404:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
+    return await exc(request)
+
 
 
 def create_db_connection():
