@@ -1,0 +1,155 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: none;
+    outline: none;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: black;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #39ab87;
+}
+
+.w-image {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-text p {
+    margin: 30px;
+}
+
+.w-image img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .login-form {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode input[type="text"],
+.dark-mode input[type="password"] {
+    border: 1px solid white;
+    color: white;
+    background-color: #555;
+}
+
+.dark-mode input[type="text"]:focus,
+.dark-mode input[type="password"]:focus {
+    border-color: #39ab87;
+}
+
+.dark-mode button {
+    background-color: #39ab87;
+}
+
+.dark-mode button:hover {
+    background-color: #333;
+}
+
+.signup a {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #39ab87;
+}
+
+h1{
+    font-size: 25px;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    color: #333;
+}
+
+.dark-mode #theme-toggle {
+    color: #f3f3f3;
+}
+
+
+.moon, .sun {
+    transition: transform 0.3s ease;
+}
+
+
+#theme-toggle.dark .moon,
+#theme-toggle.light .sun {
+    transform: rotate(-20deg);
+}

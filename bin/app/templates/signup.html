@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/icon.webp?v=2"/>
+    <title>Darkbrains</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Welcome</h1>
+            <div class="w-image">
+                <img src="/static/icon.webp">
+            </div>
+            <div class="w-text">
+                <p>Sign up to Darkbrains.</p>
+            </div>
+            <form>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit">Sign up</button>
+            </form>
+            <div class="signup">
+                <p>Already have an account?  <a href="https://cloud.darkbrains.com/login">Log in</a></p>
+            </div>
+        </div>
+    </div>
+    <button id="theme-toggle" aria-label="Toggle theme">
+        <span id="theme-toggle-icon" class="moon">&#9790;</span>
+    </button>
+    <script src="/static/theme.js?v=2"></script>
+</body>
+</html>

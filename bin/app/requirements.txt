@@ -1,0 +1,8 @@
+uvicorn
+pymongo
+fastapi
+jinja2
+pyyaml
+python-multipart
+prometheus-client
+python-json-logger
