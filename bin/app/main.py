@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from prometheus_client import make_wsgi_app, CollectorRegistry, multiprocess, ProcessCollector, PlatformCollector
@@ -80,8 +81,8 @@ app.router.add_event_handler("startup", app_lifespan)
 
 
 @app.get("/")
-async def root(request: Request):
-    return templates.TemplateResponse("404.html", {"request": request})
+async def root():
+    return RedirectResponse(url="/login", status_code=301)
 
 
 @app.get("/api/healthz")
