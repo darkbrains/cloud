@@ -84,6 +84,11 @@ async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.get("/api/healthz")
+async def root(request: Request):
+    return templates.TemplateResponse("healthz.html", {"request": request})
+
+
 @app.get("/login")
 async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
