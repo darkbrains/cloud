@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/icon.webp?v=3"/>
+    <title>Darkbrains</title>
+    <link rel="stylesheet" href="/static/styles.css?v=3">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .login-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .code-input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .code-input {
+            width: calc(100% / 6 - 10px);
+            margin: 0 5px;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .code-input:first-child {
+            margin-left: 0;
+        }
+        .code-input:last-child {
+            margin-right: 0;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #39ab87;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Verify Your Account</h1>
+            <p>We have sent a verification code to your email. Please check your inbox.</p>
+            <form id="v1" action="/verify" method="post">
+                <div class="code-input-group">
+                    <input class="code-input" type="text" name="code1" maxlength="1" pattern="[0-9]{1}" required>
+                    <input class="code-input" type="text" name="code2" maxlength="1" pattern="[0-9]{1}" required>
+                    <input class="code-input" type="text" name="code3" maxlength="1" pattern="[0-9]{1}" required>
+                    <input class="code-input" type="text" name="code4" maxlength="1" pattern="[0-9]{1}" required>
+                    <input class="code-input" type="text" name="code5" maxlength="1" pattern="[0-9]{1}" required>
+                    <input class="code-input" type="text" name="code6" maxlength="1" pattern="[0-9]{1}" required>
+                </div>
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="code" id="fullCode">
+                <!-- {% if error %}
+                <div id="error-message" style="color: red; text-align: center;">{{ error }}</div>
+                {% endif %} -->
+                <button type="submit">Verify</button>
+            </form>
+        </div>
+    </div>
+    <button id="theme-toggle" aria-label="Toggle theme">
+        <span id="theme-toggle-icon" class="moon">&#9790;</span>
+    </button>
+    <script src="/static/theme.js?v=3"></script>
+    <script>
+        window.addEventListener('load', (event) => {
+            if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+                document.getElementById("v1").reset();
+            }
+        });
+    </script>
+    <script>
+    document.querySelectorAll('.code-input').forEach((input, index, array) => {
+        input.addEventListener('keyup', (e) => {
+            handleInputFocusChange(e, index, array);
+        });
+
+        input.addEventListener('paste', (e) => {
+            handlePaste(e, array);
+        });
+    });
+    function handleInputFocusChange(e, index, array) {
+        if (index < array.length - 1 && e.target.value) {
+            array[index + 1].focus();
+        } else if (index > 0 && !e.target.value) {
+            array[index - 1].focus();
+        }
+        updateFullCode(array);
+    }
+    function handlePaste(e, array) {
+        e.preventDefault();
+        const pasteData = e.clipboardData.getData('text');
+        pasteData.split('').forEach((char, index) => {
+            if (index < array.length) {
+                array[index].value = char;
+            }
+        });
+        updateFullCode(array);
+    }
+    function updateFullCode(array) {
+        let fullCode = '';
+        array.forEach(codeInput => {
+            fullCode += codeInput.value;
+        });
+        document.getElementById('fullCode').value = fullCode;
+    }
+    </script>
+</body>
+</html>
