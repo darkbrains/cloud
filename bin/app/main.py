@@ -81,7 +81,7 @@ app.router.add_event_handler("startup", app_lifespan)
 
 @app.get("/")
 async def root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("404.html", {"request": request})
 
 
 @app.get("/api/healthz")
